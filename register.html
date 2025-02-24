@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <h2 class="header-title">Employee Registration</h2>
+
+    <button class="add-btn" onclick="addEmployee()">Add Employee</button>
+
+    <table class="employee-table">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>RFID</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTable">
+            <!-- Employee rows will be added dynamically -->
+        </tbody>
+    </table>
+
+    <button class="submit-btn" onclick="submitEmployees()">Submit</button>
+
+    <script>
+        let employees = [];
+
+        function addEmployee() {
+            let employeeId = prompt("Enter Employee ID:");
+            let rfid = prompt("Enter RFID:");
+
+            if (employeeId && rfid) {
+                employees.push({ employeeId, rfid });
+
+                let table = document.getElementById("employeeTable");
+                let row = table.insertRow();
+                row.insertCell(0).innerText = employeeId;
+                row.insertCell(1).innerText = rfid;
+            } else {
+                alert("Employee ID and RFID are required!");
+            }
+        }
+
+        function submitEmployees() {
+            if (employees.length === 0) {
+                alert("No employees to submit.");
+                return;
+            }
+
+            fetch("https://your-api-endpoint.com/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(employees),
+            })
+            .then(response => response.json())
+            .then(data => alert("Employees submitted successfully!"))
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+
+</body>
+</html>

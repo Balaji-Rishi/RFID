@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Setup</title>
+    <link rel="stylesheet" href="quicksetup.css">
+</head>
+<body>
+
+    <div class="setup-container" id="wifiSetup">
+        <h2 class="setup-title">WiFi Setup</h2>
+
+        <label for="wifi" class="setup-label">Select WiFi:</label>
+        <select id="wifi" class="setup-dropdown" onchange="updateSSID()">
+            <option value="">--Select Network--</option>
+            <option value="WiFi1">WiFi1</option>
+            <option value="WiFi2">WiFi2</option>
+            <option value="WiFi3">WiFi3</option>
+        </select>
+
+        <label for="ssid" class="setup-label">SSID:</label>
+        <input type="text" id="ssid" class="setup-input" readonly>
+
+        <label for="password" class="setup-label">Enter Password:</label>
+        <input type="password" id="password" class="setup-input" placeholder="Enter WiFi Password">
+
+        <button class="setup-button" onclick="connectWiFi()">Submit</button>
+    </div>
+
+    <div class="setup-container hidden" id="companySettings">
+        <h2 class="setup-title">Company Settings</h2>
+
+        <label for="companyId" class="setup-label">Enter Company ID:</label>
+        <input type="text" id="companyId" class="setup-input" placeholder="Enter Company ID">
+        <button class="setup-button" onclick="fetchCompanyDetails()">Submit</button>
+
+        <h3 class="company-name">Company Name: <span id="companyName"></span></h3>
+    </div>
+
+    <div class="setup-container hidden" id="deviceSettings">
+        <h2 class="setup-title">Device ID Selection</h2>
+
+        <label for="deviceId" class="setup-label">Select Device ID:</label>
+        <select id="deviceId" class="setup-dropdown"></select>
+
+        <button class="setup-button" onclick="completeSetup()">Submit</button>
+    </div>
+
+    <script>
+        function updateSSID() {
+            document.getElementById("ssid").value = document.getElementById("wifi").value;
+        }
+
+        function connectWiFi() {
+            let wifi = document.getElementById("ssid").value;
+            let password = document.getElementById("password").value;
+
+            if (wifi && password) {
+                alert("WiFi Connected Successfully!");
+                document.getElementById("wifiSetup").classList.add("hidden");
+                document.getElementById("companySettings").classList.remove("hidden");
+            } else {
+                alert("Please select a WiFi and enter password.");
+            }
+        }
+
+        function fetchCompanyDetails() {
+            let companyId = document.getElementById("companyId").value;
+            if (!companyId) {
+                alert("Please enter Company ID.");
+                return;
+            }
+
+            // Simulating API call
+            let response = {
+                companyName: "TechCorp Ltd.",
+                deviceIds: ["Device101", "Device202", "Device303"]
+            };
+
+            document.getElementById("companyName").innerText = response.companyName;
+
+            let deviceDropdown = document.getElementById("deviceId");
+            deviceDropdown.innerHTML = "";
+            response.deviceIds.forEach(id => {
+                let option = document.createElement("option");
+                option.value = id;
+                option.textContent = id;
+                deviceDropdown.appendChild(option);
+            });
+
+            document.getElementById("companySettings").classList.add("hidden");
+            document.getElementById("deviceSettings").classList.remove("hidden");
+        }
+
+        function completeSetup() {
+            let selectedDevice = document.getElementById("deviceId").value;
+            alert(`Setup completed with Device: ${selectedDevice}`);
+            window.location.href = "index.html"; // Redirect to Main Page
+        }
+    </script>
+
+</body>
+</html>

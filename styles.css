@@ -1,0 +1,79 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+/* Full Page Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f8f9fa;
+}
+
+/* Centered Heading */
+.main-heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Menu Item Box */
+.menu-item {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 150px;
+}
+
+/* Icon Styling */
+.menu-icon {
+    font-size: 45px;
+    color: #007BFF;
+}
+
+/* Text Styling */
+.menu-text {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hover Effects */
+.menu-item:hover {
+    background: #007BFF;
+    transform: translateY(-5px);
+}
+
+.menu-item:hover .menu-icon,
+.menu-item:hover .menu-text {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

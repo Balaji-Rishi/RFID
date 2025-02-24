@@ -1,0 +1,135 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+/* Full Page Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 20px;
+}
+
+/* Setup Container */
+.setup-container {
+    background: white;
+    width: 50%;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 20px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Hide Elements */
+.hidden {
+    display: none;
+}
+
+/* Title Styling */
+.setup-title {
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Label Styling */
+.setup-label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Input & Dropdown Styling */
+.setup-input, 
+.setup-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.setup-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.setup-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Company Name */
+.company-name {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #007BFF;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .setup-container {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .setup-container {
+        width: 80%;
+    }
+
+    .setup-title {
+        font-size: 22px;
+    }
+
+    .setup-button {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .setup-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .setup-title {
+        font-size: 20px;
+    }
+
+    .setup-input, 
+    .setup-dropdown {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .setup-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .company-name {
+        font-size: 16px;
+    }
+}
